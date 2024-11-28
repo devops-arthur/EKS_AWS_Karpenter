@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-arm64
+spec:
+  nodeSelector:
+    karpenter.sh/capacity-type: on-demand
+    kubernetes.io/arch: arm64
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
+        requests:
+          memory: "256Mi"
+          cpu: "250m"
